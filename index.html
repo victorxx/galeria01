@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Título da Página -->
+  <title>Imagens Interessantes e Inspiradoras</title>
+
+  <!-- Descrição para Motores de Busca -->
+  <meta name="description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
+
+  <!-- Palavras-chave (opcional, pouco usado hoje, mas pode ajudar) -->
+  <meta name="keywords" content="galeria, imagens interessantes, inspiração, fotos criativas, embaralhar imagens, carregamento dinâmico" />
+
+  <!-- Autor da Página -->
+  <meta name="author" content="VICTORSAIB" />
+
+  <!-- Robots: para indexação e seguir links -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph para Facebook, LinkedIn e etc -->
+  <meta property="og:title" content="Imagens Interessantes e Inspiradoras" />
+  <meta property="og:description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
+  <meta property="og:type" content="website" />
+
+
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Imagens Interessantes e Inspiradoras" />
+  <meta name="twitter:description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
+
+
+  <!-- Favicon (opcional) -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Outros metadados úteis -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      padding: 30px 20px 10px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #ff5c5c;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    main {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .visit-btn {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 6px 10px;
+      background-color: rgba(255, 92, 92, 0.9);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 12px;
+      text-decoration: none;
+      z-index: 1;
+      transition: background-color 0.3s;
+    }
+
+    .visit-btn:hover {
+      background-color: rgba(224, 72, 72, 0.95);
+    }
+
+    #shuffleBtn,
+    #loadMoreBtn {
+      margin: 10px auto;
+      display: block;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #shuffleBtn {
+      background-color: #ff5c5c;
+      box-shadow: 0 0 15px #ff5c5c80;
+    }
+
+    #shuffleBtn:hover {
+      background-color: #e04848;
+    }
+
+    #loadMoreBtn {
+      background-color: #5cff92;
+      color: #121212;
+      box-shadow: 0 0 10px #5cff9280;
+    }
+
+    #loadMoreBtn:hover {
+      background-color: #4cd27d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Galeria Interativa</h1>
+    <p>BEM VINDO!</p>
+  </header>
+
+  <main>
+    <button id="shuffleBtn">Embaralhar</button>
+    <button id="loadMoreBtn">Carregar mais</button>
+    <section class="gallery" id="gallery"></section>
+  </main>
+
+
+  <!-- Pinterest Script (opcional para compatibilidade) -->
+  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
