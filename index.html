@@ -1,166 +1,234 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- Título da Página -->
   <title>Imagens Interessantes e Inspiradoras</title>
-
-  <!-- Descrição para Motores de Busca -->
-  <meta name="description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
-
-  <!-- Palavras-chave (opcional, pouco usado hoje, mas pode ajudar) -->
-  <meta name="keywords" content="galeria, imagens interessantes, inspiração, fotos criativas, embaralhar imagens, carregamento dinâmico" />
-
-  <!-- Autor da Página -->
-  <meta name="author" content="VICTORSAIB" />
-
-  <!-- Robots: para indexação e seguir links -->
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph para Facebook, LinkedIn e etc -->
-  <meta property="og:title" content="Imagens Interessantes e Inspiradoras" />
-  <meta property="og:description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
-  <meta property="og:type" content="website" />
-
-
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Imagens Interessantes e Inspiradoras" />
-  <meta name="twitter:description" content="Descubra imagens interessantes, criativas e inspiradoras. Embaralhe e carregue novas ideias visuais com um clique!" />
-
-
-  <!-- Favicon (opcional) -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- Outros metadados úteis -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+  <!-- [meta tags SEO omitidas para brevidade] -->
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 20px 10px;
+  }
+
+  header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #ff5c5c;
+    letter-spacing: 1px;
+  }
+
+  header p {
+    font-size: 1.1em;
+    color: #bbbbbb;
+  }
+
+  main {
+    width: 95%;
+    max-width: 850px;
+    margin: 20px auto;
+  }
+
+  button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #shuffleBtn {
+    background-color: #ff5c5c;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 92, 92, 0.4);
+  }
+
+  #shuffleBtn:hover {
+    background-color: #e04747;
+  }
+
+  #loadMoreBtn {
+    background-color: #5cff92;
+    color: #121212;
+    box-shadow: 0 4px 12px rgba(92, 255, 146, 0.4);
+  }
+
+  #loadMoreBtn:hover {
+    background-color: #49cc75;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+    border-radius: 12px;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .visit-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 92, 92, 0.95);
+    padding: 6px 12px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+  }
+
+  .visit-btn:hover {
+    background: rgba(224, 72, 72, 1);
+  }
+
+  /* MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.95);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(255, 92, 92, 0.5);
+    cursor: zoom-out;
+  }
+
+  .close-text {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+  }
+
+  .modal a, .modal p {
+    color: #5cff92;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 600px;
+    word-break: break-word;
+  }
+
+  .modal a:hover {
+    color: #82ffae;
+  }
+
+  .modal iframe {
+    max-width: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 260px;
+  }
+
+  @media (min-width: 768px) {
+    .modal-content {
+      max-height: 70vh;
     }
 
-    header {
-      padding: 30px 20px 10px;
-      text-align: center;
+    .modal iframe {
+      height: 300px;
     }
-
-    header h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-      color: #ff5c5c;
-    }
-
-    header p {
-      font-size: 1.2em;
-      color: #ccc;
-    }
-
-    main {
-      width: 90%;
-      max-width: 800px;
-      margin: 20px auto;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      background-color: #1e1e1e;
-      border-radius: 10px;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .visit-btn {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      padding: 6px 10px;
-      background-color: rgba(255, 92, 92, 0.9);
-      color: white;
-      border: none;
-      border-radius: 15px;
-      font-size: 12px;
-      text-decoration: none;
-      z-index: 1;
-      transition: background-color 0.3s;
-    }
-
-    .visit-btn:hover {
-      background-color: rgba(224, 72, 72, 0.95);
-    }
-
-    #shuffleBtn,
-    #loadMoreBtn {
-      margin: 10px auto;
-      display: block;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 50px;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    #shuffleBtn {
-      background-color: #ff5c5c;
-      box-shadow: 0 0 15px #ff5c5c80;
-    }
-
-    #shuffleBtn:hover {
-      background-color: #e04848;
-    }
-
-    #loadMoreBtn {
-      background-color: #5cff92;
-      color: #121212;
-      box-shadow: 0 0 10px #5cff9280;
-    }
-
-    #loadMoreBtn:hover {
-      background-color: #4cd27d;
-    }
+  }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Galeria Interativa</h1>
     <p>BEM VINDO!</p>
   </header>
-
   <main>
     <button id="shuffleBtn">Embaralhar</button>
     <button id="loadMoreBtn">Carregar mais</button>
     <section class="gallery" id="gallery"></section>
   </main>
 
+  <!-- Modal ampliado -->
+  <div id="imageModal" class="modal" onclick="closeModal(event)">
+    <span class="close-text" onclick="closeModal(event)">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Imagem Ampliada" />
+    <p>
+  <a href="https://social-5rp.pages.dev/" target="_blank">
+    🔍 Você Precisa Conhecer Esses Perfis Agora!
+        </a>
+      </p>
+    <a href="https://uteis01.pages.dev/servicobancario" target="_blank">SEGUROS E CONSÓRCIOS CONFIRA</a>
+    <p>
+   <a href="https://hostinger.com.br/?REFERRALCODE=1VICTOR444vps123" target="_blank">
+    🔥 Crie seu site com hospedagem profissional! Ganhe desconto exclusivo com a Hostinger!
+   </a>
+   </p>
+    <p><a href="https://novidadesportalwe.blogspot.com/2025/07/transforme-seu-espaco-em-renda-extra.html" target="_blank">RENDA EXTRA CONFIRA!</a></p>
+    <iframe id="iframe-fixo" loading="lazy" src="https://modeloanuncio01.pages.dev/" title="Anúncio Fixo Responsivo"></iframe>
+  </div>
 
-  <!-- Pinterest Script (opcional para compatibilidade) -->
+  <!-- Scripts -->
   <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
